@@ -38,7 +38,7 @@ const templateFunctions = {
 
     get.concat({
       lookup: cacheable.lookup,
-      timeout:7500,
+      timeout:10000,
       method: 'POST',
       url: `${config.carboneUrl}template`,
       body: form,
@@ -71,7 +71,7 @@ const templateFunctions = {
     }
 
     get.concat({
-       timeout:7500,
+       timeout:10000,
       method: 'DELETE',
       url: `${config.carboneUrl}template/${templateId}`,
       headers: {
@@ -106,7 +106,7 @@ const templateFunctions = {
 
     get({
         lookup: cacheable.lookup,
-       timeout:7500,
+       timeout:10000,
       method: 'GET',
       url: `${config.carboneUrl}template/${templateId}`,
       headers: {
