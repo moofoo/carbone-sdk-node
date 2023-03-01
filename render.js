@@ -76,7 +76,7 @@ const renderFunctions = {
   _renderWithTemplateId: function (templateId, filePath, data, stream, callback, _retries = 0) {
     get.concat({
       lookup: cacheable.lookup,
-      timeout: 7500,
+      timeout: 10000,
       method: 'POST',
       url: `${config.carboneUrl}render/${templateId}`,
       headers: {
@@ -145,7 +145,7 @@ const renderFunctions = {
   _getRenderedReport: function (renderId, stream, callback, _retry = false) {
     get({
       lookup: cacheable.lookup,
-      timeout:7500,
+      timeout:10000,
       method: 'GET',
       url: `${config.carboneUrl}render/${renderId}`,
       headers: {
