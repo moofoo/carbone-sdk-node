@@ -7,6 +7,9 @@ const crypto            = require('crypto');
 const utils             = require('./utils');
 const sdkConfig         = require('./config');
 const config            = sdkConfig.config;
+const CacheableLookup = require('cacheable-lookup');
+
+const cacheable = new CacheableLookup();
 
 let _apiKey = null;
 let _cache = null;
@@ -72,6 +75,7 @@ const renderFunctions = {
    */
   _renderWithTemplateId: function (templateId, filePath, data, stream, callback, _retries = 0) {
     get.concat({
+      lookup: cacheable.lookup,
       timeout: 7500,
       method: 'POST',
       url: `${config.carboneUrl}render/${templateId}`,
@@ -140,6 +144,7 @@ const renderFunctions = {
    */
   _getRenderedReport: function (renderId, stream, callback, _retry = false) {
     get({
+      lookup: cacheable.lookup,
       timeout:7500,
       method: 'GET',
       url: `${config.carboneUrl}render/${renderId}`,
