@@ -35,6 +35,7 @@ const templateFunctions = {
     form.append('template', fs.createReadStream(localPath))
 
     get.concat({
+      timeout:7500,
       method: 'POST',
       url: `${config.carboneUrl}template`,
       body: form,
@@ -67,6 +68,7 @@ const templateFunctions = {
     }
 
     get.concat({
+       timeout:7500,
       method: 'DELETE',
       url: `${config.carboneUrl}template/${templateId}`,
       headers: {
@@ -100,6 +102,7 @@ const templateFunctions = {
     }
 
     get({
+       timeout:7500,
       method: 'GET',
       url: `${config.carboneUrl}template/${templateId}`,
       headers: {
