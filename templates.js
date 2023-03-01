@@ -5,7 +5,9 @@ const sdkConfig         = require('./config');
 const config            = sdkConfig.config;
 const fs                = require('fs');
 const StreamAnswer      = require('./streamAnswer');
+const CacheableLookup = require('cacheable-lookup');
 
+const cacheable = new CacheableLookup();
 let _apiKey = null;
 
 const templateFunctions = {
@@ -35,6 +37,7 @@ const templateFunctions = {
     form.append('template', fs.createReadStream(localPath))
 
     get.concat({
+      lookup: cacheable.lookup,
       timeout:7500,
       method: 'POST',
       url: `${config.carboneUrl}template`,
@@ -102,6 +105,7 @@ const templateFunctions = {
     }
 
     get({
+        lookup: cacheable.lookup,
        timeout:7500,
       method: 'GET',
       url: `${config.carboneUrl}template/${templateId}`,
