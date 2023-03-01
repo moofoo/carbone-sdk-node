@@ -139,6 +139,7 @@ const renderFunctions = {
    */
   _getRenderedReport: function (renderId, stream, callback, _retry = false) {
     get({
+      timeout:7500,
       method: 'GET',
       url: `${config.carboneUrl}render/${renderId}`,
       headers: {
