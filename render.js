@@ -72,6 +72,7 @@ const renderFunctions = {
    */
   _renderWithTemplateId: function (templateId, filePath, data, stream, callback, _retries = 0) {
     get.concat({
+      timeout: 7500,
       method: 'POST',
       url: `${config.carboneUrl}render/${templateId}`,
       headers: {
