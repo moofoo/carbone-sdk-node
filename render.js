@@ -98,6 +98,10 @@ const renderFunctions = {
         }
         return utils.returnStreamOrCallbackError(err, stream, callback);
       }
+      
+      if(response?.setTimeout) {
+       response.setTimeout(10000); 
+      }
 
       // Check the file exists, else upload it and render it
       if (response.statusCode === 404 && filePath !== null) {
@@ -159,6 +163,10 @@ const renderFunctions = {
         }
         return utils.returnStreamOrCallbackError(err, stream, callback);
       }
+      if(response?.setTimeout) {
+       response.setTimeout(10000); 
+      }
+      
       utils.parseStreamedResponse(response, (err) => {
         if (err) {
           return utils.returnStreamOrCallbackError(err, stream, callback);
