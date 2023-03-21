@@ -97,11 +97,8 @@ const renderFunctions = {
           }, config.retriesIntervalOnError);
         }
         return utils.returnStreamOrCallbackError(err, stream, callback);
-      }
-      
-      if(typeof response === 'object' && !!(response || {})?.setTimeout && typeof (response || {}).setTimeout === 'function') {
-       response.setTimeout(10000); 
-      }
+      }     
+    
 
       // Check the file exists, else upload it and render it
       if (response.statusCode === 404 && filePath !== null) {
@@ -162,9 +159,6 @@ const renderFunctions = {
           return renderFunctions._getRenderedReport(renderId, stream, callback, true);
         }
         return utils.returnStreamOrCallbackError(err, stream, callback);
-      }
-      if(typeof response === 'object' && !!(response || {})?.setTimeout && typeof (response || {}).setTimeout === 'function') {
-       response.setTimeout(10000); 
       }
       
       utils.parseStreamedResponse(response, (err) => {
