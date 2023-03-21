@@ -99,7 +99,7 @@ const renderFunctions = {
         return utils.returnStreamOrCallbackError(err, stream, callback);
       }
       
-      if(response?.setTimeout) {
+      if(!!response?.setTimeout && typeof response.setTimeout === 'function') {
        response.setTimeout(10000); 
       }
 
@@ -163,7 +163,7 @@ const renderFunctions = {
         }
         return utils.returnStreamOrCallbackError(err, stream, callback);
       }
-      if(response?.setTimeout) {
+      if(!!response?.setTimeout && typeof response.setTimeout === 'function') {
        response.setTimeout(10000); 
       }
       
